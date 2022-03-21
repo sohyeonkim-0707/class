@@ -9,10 +9,10 @@ export default function BoardWriteUI(props) {
   return(
     <div>
       {/* <div>{data}</div> */}
-      작성자: <S.WriterInput type="text" onChange={props.onChangeWriter}></S.WriterInput><br/>
+      작성자: <S.SubmitButton type="text" onChange={props.onChangeWriter}></S.SubmitButton><br/>
       제목: <input type="text" onChange={props.onChangeTitle}></input><br/>
       내용: <input type="text" onChange={props.onChangeContents}></input><br/>
-      <S.SubmitButton onClick={props.callGraphqlApi} isActive={props.isActive}>GRAPHQL-API 요청하기!!! </S.SubmitButton>
+      <S.WriterInput onClick={props.callGraphqlApi} isActive={props.isActive}>GRAPHQL-API 요청하기!!! </S.WriterInput>
     </div>
   )
 }
