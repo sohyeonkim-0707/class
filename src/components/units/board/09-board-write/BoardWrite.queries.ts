@@ -1,23 +1,33 @@
-//퀴즈
-//쿼리즈
-import {gql} from '@apollo/client'
+// 퀴즈
+// 쿼리즈
+import { gql } from "@apollo/client";
 export const CREATE_BOARD = gql`
-        mutation createBoard($writer:String, $title:String, $contents:String) {
-            createBoard( writer:$writer, title:$title, contents:$contents){
-            _id
-            number
-            message
-            }
-        }
-    `
+  mutation createBoard($writer: String, $title: String, $contents: String) {
+    createBoard(writer: $writer, title: $title, contents: $contents) {
+      _id
+      number
+      message
+    }
+  }
+`;
 
-//업데이트
+// 업데이트
 export const UPDATE_BOARD = gql`
-        mutation updateBoard($number:Int, $writer:String, $title:String, $contents:String) {
-            updateBoard(number:$number, writer:$writer, title:$title, contents:$contents){
-            _id
-            number
-            message
-            }
-        }
-    `
+  mutation updateBoard(
+    $number: Int
+    $writer: String
+    $title: String
+    $contents: String
+  ) {
+    updateBoard(
+      number: $number
+      writer: $writer
+      title: $title
+      contents: $contents
+    ) {
+      _id
+      number
+      message
+    }
+  }
+`;
