@@ -1,5 +1,4 @@
-// 07-02 가지고 실습
-// 라스트페이지
+// 07-02
 
 import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
@@ -41,17 +40,17 @@ export default function MapBoardPage() {
     refetch({ page: Number(event.target.id) });
   };
 
-  // 이전페이지
+  // 이전 10 페이지 클릭함수
   const onClickPrevPage = () => {
     if (startPage === 1) return;
-    setStartPage((prev) => prev - 10);
+    setStartPage((prev) => prev - 10); // 기존 -10
     refetch({ page: startPage - 10 });
   };
 
-  // 다음페이지
+  // 다음 10페이지 클릭함수
   const onClickNextPage = () => {
-    if (!(startPage + 10 <= lastPage)) return; // 이것에 반대되는 것은 리턴 불가
-    setStartPage((prev) => prev + 10); // 기존것에다가 +10
+    if (!(startPage + 10 <= lastPage)) return;
+    setStartPage((prev) => prev + 10); // 기존 +10
     refetch({ page: startPage + 10 });
   };
 
@@ -66,7 +65,7 @@ export default function MapBoardPage() {
       ))}
 
       <span onClick={onClickPrevPage}>이전페이지</span>
-      {/* // index + 1 로 바꾼 이유는 뭐였지  */}
+
       {new Array(10).fill(1).map((_, index) =>
         index + startPage <= lastPage ? (
           <span
@@ -102,5 +101,3 @@ export default function MapBoardPage() {
     </div>
   );
 }
-
-// 이 목록에 대한 1페이지 2페이지 즉 다시 가져오는거 리패치
