@@ -80,24 +80,7 @@ export default function MapBoardPage() {
           <span></span>
         )
       )}
-
-      {/* index 나머지 뒤에는 span이 그려진 것 */}
       <span onClick={onClickNextPage}>다음페이지</span>
-
-      {/* {[1, 2, 3, 4, 5, 6, 7].map((el) => (
-        <span key={el} onClick={onClickPage} id={String(el)}>
-          {el}
-        </span>
-      ))} */}
-      {/* <span onClick={onClickPage} id="1">
-        1
-      </span>
-      <span onClick={onClickPage} id="2">
-        2
-      </span>
-      <span onClick={onClickPage} id="3">
-        3
-      </span> */}
     </div>
   );
 }
