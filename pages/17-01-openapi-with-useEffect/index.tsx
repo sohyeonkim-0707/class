@@ -6,11 +6,11 @@ export default function OpenApiWithUseEffectPage() {
   // 강아지 이미지 주소를 저장해둘 state
   const [dogUrl, setDogUrl] = useState(""); // 이미지 주소의 초기값
 
-  // axios 날리기 _ 주소는 postman에서 사용했던것과 동일합니다.
-  // 마운트 될 때 한번만 요청할 수 있도록 의존성배열( [ ] )을 적어주었습니다.
+  // 첫 마운트시에만 요청을 보낼 수 있도록 의존성 배열을 같이 적어준다. []
+  // open api가 대부분 rest-API 이기 때문에 대부분 axios를 이용한다.
   useEffect(() => {
     const fetchDog = async () => {
-      const result = await axios.get("https://dog.ceo/api/breeds/image/random");
+      const result = await axios.get("https://dog.ceo/api/breeds/image/random"); // open API 주소
       setDogUrl(result.data.message);
     };
 
