@@ -59,12 +59,14 @@ export default function MapBoardPage() {
       검색어입력:
       <input type="text" onChange={onChangeSearch} />
       {/* <button onClick={onClickSearch}>검색하기</button> */}
+      {/* 글목록 */}
       {data?.fetchBoards.map((el) => (
         <MyRow key={el._id}>
           <MyColumn>{el.writer}</MyColumn>
           <MyColumn>{el.title}</MyColumn>
         </MyRow>
       ))}
+      {/* 페이지네이션 */}
       {new Array(10).fill(1).map((_, index) => (
         <span key={index + 1} onClick={onClickPage} id={String(index + 1)}>
           {index + 1}

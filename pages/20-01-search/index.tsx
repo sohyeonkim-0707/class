@@ -1,4 +1,4 @@
-// 먼저 게시글 목록이 나오고 07-02 파일 사용 & 14-01 페이지네이션
+// 먼저 게시글 목록이 나오고 07-02 파일 사용 & 14-01 페이지네이션 적용
 // 그 위에 검색하기 버튼이랑 인풋창
 // 입력하고 검색하는 버튼을 누르면 이 목록이 바뀌게끔
 
@@ -54,12 +54,14 @@ export default function MapBoardPage() {
       검색어입력:
       <input type="text" onChange={onChangeSearch} />
       <button onClick={onClickSearch}>검색하기</button>
+      {/* 글목록 */}
       {data?.fetchBoards.map((el) => (
         <MyRow key={el._id}>
           <MyColumn>{el.writer}</MyColumn>
           <MyColumn>{el.title}</MyColumn>
         </MyRow>
       ))}
+      {/* 페이지네이션 */}
       {new Array(10).fill(1).map((_, index) => (
         <span key={index + 1} onClick={onClickPage} id={String(index + 1)}>
           {index + 1}

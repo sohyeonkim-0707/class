@@ -29,6 +29,7 @@ const MyRow = styled.div`
 const MyColumn = styled.div`
   width: 400px;
 `;
+
 interface IProps {
   isMatched: boolean;
 }
@@ -43,7 +44,10 @@ export default function MapBoardPage() {
   const { data, refetch } = useQuery<
     Pick<IQuery, "fetchBoards">,
     IQueryFetchBoardsArgs
-  >(FETCH_BOARDS);
+  >(FETCH_BOARDS, {
+    variables,
+    fetchPolicy: "",
+  });
 
   const getDebounce = _.debounce((data) => {
     refetch({ search: data, page: 1 });
@@ -72,7 +76,7 @@ export default function MapBoardPage() {
           <MyColumn>{el.writer}</MyColumn>
           <MyColumn>
             {el.title
-              .replaceAll(keyword, `#$%${keyword}#$%`)
+              .replaceAll(keyword, `#$%${keyword}#$%`) // replaceAll() 함수는 대상 문자열을 원하는 문자값으로 변환하는 함수
               .split("#$%")
               .map((el) => (
                 <Word key={uuidv4()} isMatched={keyword === el}>
