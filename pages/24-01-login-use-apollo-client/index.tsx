@@ -1,8 +1,8 @@
-import { gql, useMutation } from "@apollo/client";
+import { gql, useMutation, useApolloClient } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { accessTokenState } from "../../src/commons/store";
+import { accessTokenState, userInfoState } from "../../src/commons/store";
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
@@ -12,12 +12,24 @@ const LOGIN_USER = gql`
   }
 `;
 
+const FETCH_USER_LOGGED_IN = gql`
+  query fetchUserLoggedIn {
+    fetchUserLoggedIn {
+      email
+      name
+    }
+  }
+`;
+
 export default function LoginPage() {
   const [, setAccessToken] = useRecoilState(accessTokenState);
+  const [, setUserInfo] = useRecoilState(userInfoState);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loginUser] = useMutation(LOGIN_USER);
   const router = useRouter();
+
+  const client = useApolloClient();
 
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -39,14 +51,27 @@ export default function LoginPage() {
     console.log(accessToken);
 
     // 2. 유저정보 받아오기
+    const resultUserInfo = await client.query({
+      query: FETCH_USER_LOGGED_IN,
+      context: {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    });
+
+    const userInfo = resultUserInfo.data.fetchUserLoggedIn;
+    console.log(userInfo);
 
     // 3. 글로벌스테이트에 저장하기
     setAccessToken(accessToken);
-    localStorage.setItem("accessToken", accessToken); // key, value
+    setUserInfo(userInfo);
+    localStorage.setItem("accessToken", accessToken); // 임시
+    localStorage.setItem("userInfo", JSON.stringify(userInfo)); // 임시 //객체라서 문자열로 바꿔줘야함JSON.stringify()
 
     // 4. 로그인 성공 페이지로 이동하기
     alert("login success");
-    router.push("/23-05-login-check-success");
+    router.push("/24-02-login-use-apollo-client-success");
   };
 
   return (
