@@ -1,4 +1,6 @@
-// function-lifecycle 실습
+// function-lifecycle 실습 // 4주차
+// 함수형 컴포넌트 useEffect 사용해서 생명주기 !!!
+// 생명주기 메서드, 훅은 기본적으로 화면이 render 된 후에 실행횐다.
 
 import { useRouter } from "next/router";
 import { useState, useEffect, useRef } from "react";
@@ -16,23 +18,36 @@ export default function CounterPage() {
   const [count, setCount] = useState(99);
 
   // 1. DidMount
+  // 1)
   // componentDidMount() {
   //   console.log("마운트됨!!!");
   //   this.inputRef.current?.focus();
   //   // 포커스 깜빡깜빡
   // }
+
+  // 2)
   // useEffect(() => {
   //   console.log("마운트됨!!!");
   //   inputRef.current?.focus();
   // }, []);
+  // 의존성 배열[]에 아무것도 넣지 않으면 Mount시에만 렌더해주고 끝나게 됨
 
   // 2. DidUpdate
-  // componentDidUpdate() {
+  //
+  // 1) componentDidUpdate() {
   //   console.log("수정되고 다시그려짐!!!");
   // }
+
+  // 2)
+  // useEffect(() => {
+  //   console.log("수정되고 다시그려짐!!!");
+  // });
+  // 의존성 배열이 없기 때문에 뭐 하나라도 바뀌면 무조건 다시 실행
+
   useEffect(() => {
     console.log("수정되고 다시그려짐!!!");
   }, [count]);
+  // count가 수정될때만 리렌더
 
   // 3. WillUnmount
   // componentWillUnmount() {
