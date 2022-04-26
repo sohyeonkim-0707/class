@@ -32,6 +32,7 @@ export default function WebEditorDetailPage() {
           }}
         ></div>
       ) : (
+        // 하이드레이션이슈해결
         <div style={{ color: "blue" }}></div>
       )}
       <div style={{ color: "brown" }}>상품가격:</div>

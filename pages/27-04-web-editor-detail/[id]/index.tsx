@@ -5,6 +5,7 @@ import Dompurify from "dompurify";
 const FETCH_BOARD = gql`
   query fetchBoard($boardId: ID!) {
     fetchBoard(boardId: $boardId) {
+      # 어떤 아이디에 대해 조회할 것인가
       _id
       writer
       title
