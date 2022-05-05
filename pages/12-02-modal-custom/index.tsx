@@ -25,7 +25,7 @@ export default function ModalCustomPage() {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Open Modal
+        충전하기
       </Button>
       <Modal
         title="Basic Modal"

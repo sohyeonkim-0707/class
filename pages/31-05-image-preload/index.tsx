@@ -11,6 +11,7 @@ export default function ImagePreloadPage() {
     img.src =
       "https://pixabay.com/get/g38c8d00a4dcd6230c798d612f69eb660cf5f3d4ea97aa84137d9a0446293c973e533fd1dad078670288462eb268fb802.jpg";
     img.onload = () => {
+      // onload 이벤트가 발생한 후에 이미지가 로딩되도록
       setImgTag(img);
     };
   }, []);

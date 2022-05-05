@@ -1,13 +1,15 @@
-// memotization
+// memoization
 // 부모자식이 연결된 컴포넌트
 
 import { useCallback, useMemo, useState } from "react";
 import MemoizationPresenterPage from "./presenter";
+
 export default function MemoizationContainerPage() {
   console.log("컨테이너가 렌더링 됩나다.");
   let countLet = 0;
   const [countState, setCountState] = useState(0);
 
+  // Math.random > 매번 새로운 값이 생성되는 것을 확인하기 위해 써봄
   const aaa = useMemo(() => Math.random(), []);
   console.log(aaa);
 
