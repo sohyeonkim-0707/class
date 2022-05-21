@@ -13,9 +13,9 @@ export default function ImageUploadPreviewPlage() {
     }
     // 내장된 기능 new FileReader: 파일 객체를 이용해 내용을 읽고 사용자 컴퓨터에 저장하는 것을 가능하게 해주는 기능
     const fileReader = new FileReader();
-    // url 형태로 파일리더를 읽겠다,  file 을 임시 Data URL을 얻을 수 있음
+    // 파일을 url 형태로 읽겠다,  file 을 읽어서 임시 URL을 형태로 만들어준다.
     fileReader.readAsDataURL(file);
-    // 이미지가 성공적으로 읽힌 경우 onload가 실행 > 다 읽어진 결과물 data 가 들어옴
+    // 이미지가 성공적으로 읽힌 경우 onload 함수가 실행 > 다 읽어진 결과물 data 가 들어옴
     fileReader.onload = (data) => {
       // string 타입시에만 실행
       if (typeof data.target?.result === "string") {

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../src/commons/store";
+import ConfirmModal from "../00_Modal/ConfirmModal";
 
 // 📌 토큰 만료시간 5초
 const LOGIN_USER = gql`
@@ -38,6 +39,7 @@ export default function LoginPage() {
     const accessToken = result.data.loginUserExample.accessToken;
     setAccessToken(accessToken);
     console.log(accessToken);
+    // ConfirmModal;
     alert("로그인에 성공하였습니다!!");
     router.push("/30-02-login-success");
   };

@@ -7,7 +7,9 @@ interface IFormValues {
 }
 
 export default function ReactHookFormPage() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm();
+
+  formState.isSubmitting;
 
   const onClickSubmit = (data: IFormValues) => {
     console.log(data); // data 결과 찍어보기
@@ -20,7 +22,7 @@ export default function ReactHookFormPage() {
       작성자: <input type="text" {...register("writer")}></input>
       제목: <input type="text" {...register("title")}></input>
       내용: <input type="text" {...register("contents")}></input>
-      <button>등록하기</button>
+      <button disabled={formState.isSubmitting}>등록하기</button>
     </form>
   );
 }
