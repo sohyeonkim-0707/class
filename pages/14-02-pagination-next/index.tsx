@@ -1,5 +1,4 @@
-// 07-02 가지고 실습
-// 다음페이지 이전페이지 넘어가기
+//이전페이지 다음페이지
 
 import { useQuery, gql } from "@apollo/client";
 import styled from "@emotion/styled";
@@ -27,18 +26,25 @@ const MyColumn = styled.div`
 
 export default function MapBoardPage() {
   const { data, refetch } = useQuery(FETCH_BOARDS);
-  const [startPage, setStartPage] = useState(1); // 기준페이지 1
+  // 기준을 시작페이지 '1'로 잡는다
+  const [startPage, setStartPage] = useState(1);
 
   const onClickPage = (event) => {
     refetch({ page: Number(event.target.id) });
   };
+
   // 이전페이지
+  // 기준 페이지에 - 10
   const onClickPrevPage = () => {
+    // 기존에 - 10
     setStartPage((prev) => prev - 10);
   };
+
   // 다음페이지
+  // 기준 페이지에 + 10
   const onClickNextPage = () => {
-    setStartPage((prev) => prev + 10); // 기존것에다가 +10
+    // 기존에 + 10
+    setStartPage((prev) => prev + 10);
   };
 
   console.log(data);
@@ -53,7 +59,6 @@ export default function MapBoardPage() {
       ))}
 
       <span onClick={onClickPrevPage}>이전페이지</span>
-      {/* // index + 1 로 바꾼 이유는 뭐였지  */}
       {new Array(10).fill(1).map((_, index) => (
         <span
           key={index + startPage}
@@ -64,23 +69,11 @@ export default function MapBoardPage() {
         </span>
       ))}
       <span onClick={onClickNextPage}>다음페이지</span>
-
-      {/* {[1, 2, 3, 4, 5, 6, 7].map((el) => (
-        <span key={el} onClick={onClickPage} id={String(el)}>
-          {el}
-        </span>
-      ))} */}
-      {/* <span onClick={onClickPage} id="1">
-        1
-      </span>
-      <span onClick={onClickPage} id="2">
-        2
-      </span>
-      <span onClick={onClickPage} id="3">
-        3
-      </span> */}
     </div>
   );
 }
 
-// 이 목록에 대한 1페이지 2페이지 즉 다시 가져오는거 리패치
+// 문제가 있음
+// - page 가 나오게 됨
+// 마지막 페이지도 끝없이 나옴
+// 시작과 끝을 정해줘야한다.
