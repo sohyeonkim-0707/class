@@ -17,12 +17,12 @@ export default function CounterPage() {
 
   const [count, setCount] = useState(99);
 
-  // 1. DidMount
+  /* 1. DidMount */
   // 1)
   // componentDidMount() {
   //   console.log("마운트됨!!!");
   //   this.inputRef.current?.focus();
-  //   // 포커스 깜빡깜빡
+  //  포커스 깜빡깜빡
   // }
 
   // 2)
@@ -32,9 +32,9 @@ export default function CounterPage() {
   // }, []);
   // 의존성 배열[]에 아무것도 넣지 않으면 Mount시에만 렌더해주고 끝나게 됨
 
-  // 2. DidUpdate
-  //
-  // 1) componentDidUpdate() {
+  /* 2. DidUpdate */
+  // 1)
+  // componentDidUpdate() {
   //   console.log("수정되고 다시그려짐!!!");
   // }
 
@@ -49,19 +49,22 @@ export default function CounterPage() {
   }, [count]);
   // count가 수정될때만 리렌더
 
-  // 3. WillUnmount
+  /* 3. WillUnmount */
+  // 1)
   // componentWillUnmount() {
   //   console.log("컴포넌트 사라짐!!!");
   //   // 채팅방 나가기
   //   // api 요청!!!
   // }
+
+  // 2)
   // useEffect(() => {
   //   return () => {
   //     console.log("컴포넌트 사라짐!!!");
   //   };
   // }, []);
 
-  // 4. DidMount와 WillUnmount를 합치기!!
+  /* 4. DidMount와 WillUnmount를 합치기!! */
   useEffect(() => {
     console.log("마운트됨!!!");
     inputRef.current?.focus();
@@ -72,7 +75,7 @@ export default function CounterPage() {
     };
   }, []);
 
-  // 5. useEffect의 잘못된 사용 예(1. 추가렌더링, 2. 무한루프)
+  /* 5. useEffect의 잘못된 사용 예(1. 추가렌더링, 2. 무한루프) */
   // useEffect(() => {
   //   setCount((prev) => prev + 1);
   // }, [count]);
