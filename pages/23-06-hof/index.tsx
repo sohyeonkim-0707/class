@@ -14,6 +14,3 @@ export default function HofPage() {
     </div>
   );
 }
-
-// hof
-//
