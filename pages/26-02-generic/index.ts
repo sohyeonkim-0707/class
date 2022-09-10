@@ -39,6 +39,7 @@ const ccc: boolean = true;
 const result5_1 = getGeneric(aaa);
 const result5_2 = getGeneric(bbb);
 const result5_3 = getGeneric(ccc);
+// <MyType>
 //
 //
 // 6. generic 타입 2

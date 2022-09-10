@@ -23,6 +23,8 @@ export default function PromiseAllPage() {
     console.log(result3);
     console.timeEnd("promise 시작!!!");
   };
+
+  // 📌 Promise.all 메서드는 여러 개의 비동기 처리를 모두 병렬로 처리할 때 사용.
   const onClickPromiseAll = async () => {
     // 1. 하나하나씩 확인하는 방법
     // console.time("Promise.all 시작!!! ");
